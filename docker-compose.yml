@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  nginx-service:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - '80:80'
+
+  nextjs-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nextjs
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
